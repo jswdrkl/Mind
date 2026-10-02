@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="mr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>मन रे..</title>
+  
+  <!-- IBM Plex Sans & IBM Plex Sans Devanagari Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            marathi: ['"IBM Plex Sans Devanagari"', '"IBM Plex Sans"', 'sans-serif'],
+          },
+          colors: {
+            cream: {
+              50: '#fdfcf9',
+              100: '#f9f6f0',
+              200: '#f2ece1',
+              300: '#e5dcce',
+            },
+            night: {
+              900: '#0d1117',
+              850: '#131822',
+              800: '#1b2230',
+              700: '#2a3449',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Devanagari', 'IBM Plex Sans', sans-serif;
+      word-break: normal;
+      overflow-wrap: break-word;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+    }
+
+    .essay-body {
+      text-align: justify;
+      text-justify: inter-word;
+      line-height: 2.1;
+      font-feature-settings: "kern" 1, "liga" 1;
+    }
+
+    /* Calming ambient floating animations for the SVG elements */
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1) translateY(0); opacity: 0.85; }
+      50% { transform: scale(1.04) translateY(-3px); opacity: 1; }
+    }
+
+    @keyframes slowSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes waveMotion {
+      0% { transform: translateY(0px) scaleY(1); }
+      50% { transform: translateY(-4px) scaleY(1.08); }
+      100% { transform: translateY(0px) scaleY(1); }
+    }
+
+    @keyframes rippleExpand {
+      0% { r: 18; opacity: 0.8; }
+      50% { r: 38; opacity: 0.35; }
+      100% { r: 52; opacity: 0; }
+    }
+
+    .animate-gentle-pulse {
+      animation: gentlePulse 6s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .animate-slow-spin {
+      animation: slowSpin 28s linear infinite;
+      transform-origin: center;
+    }
+
+    .animate-wave-1 {
+      animation: waveMotion 5s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .animate-wave-2 {
+      animation: waveMotion 7s ease-in-out infinite reverse;
+      transform-origin: center;
+    }
+
+    .animate-ripple {
+      animation: rippleExpand 4s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+      transform-origin: center;
+    }
+
+    .animate-ripple-delayed {
+      animation: rippleExpand 4s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+      animation-delay: 2s;
+      transform-origin: center;
+    }
+
+    /* Smooth page theme transition */
+    body, header, article, div, button {
+      transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+
+<body class="bg-cream-50 text-stone-800 dark:bg-night-900 dark:text-stone-200 min-h-screen flex flex-col justify-start items-center selection:bg-amber-200 dark:selection:bg-amber-900/60 selection:text-stone-900">
+
+  <!-- Floating Controls Bar (Theme Toggle and Share) -->
+  <div class="fixed top-4 right-4 z-50 flex items-center space-x-2.5 p-1.5 rounded-full bg-white/80 dark:bg-night-850/85 backdrop-blur-md border border-stone-200/80 dark:border-stone-700/60 shadow-lg">
+    <!-- Share Button -->
+    <button id="shareBtn" 
+            aria-label="Share this text" 
+            title="शेअर करा"
+            class="p-2.5 rounded-full text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-stone-100 dark:hover:bg-night-700 active:scale-95 transition-all">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+      </svg>
+    </button>
+
+    <!-- Theme Toggle Button -->
+    <button id="themeToggleBtn" 
+            aria-label="Toggle light and dark theme" 
+            title="थीम बदला"
+            class="p-2.5 rounded-full text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-stone-100 dark:hover:bg-night-700 active:scale-95 transition-all">
+      <!-- Sun icon (shown in dark mode) -->
+      <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <!-- Moon icon (shown in light mode) -->
+      <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <main class="w-full max-w-2xl px-5 sm:px-8 py-14 sm:py-20 flex flex-col items-center">
+    
+    <!-- Animated Light Colorful SVG Graphic: Representing the Wandering & Centered Mind (मन रे..) -->
+    <div class="w-48 h-48 sm:w-56 sm:h-56 mb-6 flex items-center justify-center relative select-none">
+      <svg class="w-full h-full" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Soft, luminous pastel gradients -->
+          <linearGradient id="mindGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fdba74" stop-opacity="0.85" />
+            <stop offset="50%" stop-color="#f472b6" stop-opacity="0.7" />
+            <stop offset="100%" stop-color="#818cf8" stop-opacity="0.75" />
+          </linearGradient>
+          <linearGradient id="petalGlow1" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#c084fc" stop-opacity="0.7" />
+          </linearGradient>
+          <linearGradient id="petalGlow2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fb923c" stop-opacity="0.65" />
+            <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.65" />
+          </linearGradient>
+          <radialGradient id="centerCore" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fef08a" stop-opacity="0.95" />
+            <stop offset="60%" stop-color="#fbbf24" stop-opacity="0.75" />
+            <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
+          </radialGradient>
+          <filter id="softGaze" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3.5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+
+        <!-- Expanding Thought Ripples in Consciousness -->
+        <circle cx="130" cy="130" r="18" class="animate-ripple stroke-amber-400/60 dark:stroke-amber-300/40" stroke-width="1.8" fill="none" />
+        <circle cx="130" cy="130" r="18" class="animate-ripple-delayed stroke-indigo-400/50 dark:stroke-indigo-300/35" stroke-width="1.6" fill="none" />
+
+        <!-- Rotating subtle outer mental aura -->
+        <g class="animate-slow-spin">
+          <circle cx="130" cy="130" r="82" stroke="url(#petalGlow1)" stroke-width="1.4" stroke-dasharray="4 8" opacity="0.6" />
+          <circle cx="130" cy="130" r="98" stroke="url(#petalGlow2)" stroke-width="1.2" stroke-dasharray="2 10" opacity="0.5" />
+          <!-- Floating sparkling thoughts -->
+          <circle cx="130" cy="32" r="3" fill="#f59e0b" opacity="0.8" />
+          <circle cx="218" cy="100" r="2.5" fill="#ec4899" opacity="0.75" />
+          <circle cx="204" cy="192" r="3.2" fill="#6366f1" opacity="0.7" />
+          <circle cx="80" cy="216" r="2.8" fill="#14b8a6" opacity="0.75" />
+          <circle cx="42" cy="110" r="3" fill="#f97316" opacity="0.8" />
+        </g>
+
+        <!-- Meditative Lotus / Inner Awakening Shape (मन / चेतना) -->
+        <g class="animate-wave-1">
+          <!-- Flowing thoughts petals -->
+          <path d="M130 52 C152 86 178 126 130 186 C82 126 108 86 130 52 Z" fill="url(#mindGlow)" opacity="0.65" filter="url(#softGaze)" />
+        </g>
+        <g class="animate-wave-2">
+          <!-- Transverse mental wave petals -->
+          <path d="M60 138 C94 116 134 142 194 94 C152 166 112 162 60 138 Z" fill="url(#petalGlow1)" opacity="0.55" />
+          <path d="M200 138 C166 116 126 142 66 94 C108 166 148 162 200 138 Z" fill="url(#petalGlow2)" opacity="0.55" />
+        </g>
+
+        <!-- Central Soul Core / साक्षीभाव -->
+        <circle cx="130" cy="130" r="26" fill="url(#centerCore)" class="animate-gentle-pulse" />
+        <circle cx="130" cy="130" r="7" class="fill-amber-100 dark:fill-white drop-shadow-md" />
+      </svg>
+    </div>
+
+    <article class="w-full text-stone-800 dark:text-stone-200">
+      
+      <!-- Document Title (Centered as original) -->
+      <h1 class="text-3xl sm:text-4xl font-semibold text-center tracking-normal mb-8 sm:mb-10 text-stone-900 dark:text-stone-100">
+        मन रे..
+      </h1>
+
+      <!-- Body Paragraphs (Text justified as requested, hyphenation disabled, preserved clean text) -->
+      <div class="space-y-6 sm:space-y-7 text-base sm:text-lg md:text-[19px] essay-body text-stone-700 dark:text-stone-300 font-normal">
+        <p>
+          मनुष्य जन्माला आला की त्याचा त्याच्या आयुष्याचा प्रवास सुरू होतो. त्याच्यासाठी आणि अर्थातच त्याच्या मनासाठी ही वाटचाल म्हणजे ‘अनुभव’ (experiences) जमा होण्याचा प्रवास असतो. वय वाढत जाते तसतसे माणसाला विविध अनुभव येत जातात आणि अनुभवांची शिदोरी अर्थात स्मृती (memory) भरू लागते. काळाच्या ओघात चांगले-वाईट, सुखद-दुःखद असे सर्व प्रकारचे अनुभव येणे/मिळणे/होणे आणि आलेले अनुभव ‘स्मृतीं’मधे नोंदले जाणे (recorded in memory) अपरिहार्य आहे.
+        </p>
+
+        <p>
+          ‘मना’ने अत्यंत नैसर्गिकपणे, या अनुभवांच्या शिदोरीत जाणता-अजाणता काहीबाही धुंडाळणे म्हणजे ‘विचार’ (thoughts) आणि या मनाहाती लागलेल्या विचारांना वर्तमानात दिली जाणारी प्रतिक्रिया म्हणजे ‘भावना’ (emotions) अशी एक ढोबळ व्याख्या करता येईल.
+        </p>
+
+        <p>
+          आयुष्याच्या प्रवासात अनुभवांचे येत राहणे आपल्या हातात नसले तरी आलेल्या अनुभवांमधील काय अनुभव &gt; स्मृतींच्या कपाटात &gt; सहज हाताशी असावे म्हणून समोरच्या(च) फडताळात ठेवायचे, किती अडीअडचणीच्या वेळेस उपयोगी पडावे म्हणून विविक्षित जागी ठेवायचे आणि कोणकोणते अनुभव ‘तद्दन टाकाऊ आणि निराशाजनक’ म्हणून निदान स्वतःपुरते तरी ‘विस्मृतीत टाकायचा’ (delete) प्रयत्न करायचा हे मात्र आपल्याच हाती असते.
+        </p>
+
+        <p>
+          निसर्गतः ‘मन’ अनुभवांच्या शिदोरीत डोकावत राहणारच आहे. त्याला सहज दिसाव्या म्हणून ‘चांगल्या स्मृती’ (good memories) आपण जाणीवपूर्वक ‘स्मृतींच्या डेटाबेस’मधे सहजी हाती लागतील अशा ‘समोरच्या कप्प्यात’ ठेवू शकलो तर त्यातून उद्भवणाऱ्या विचारांना दिल्या जाणाऱ्या प्रतिक्रिया म्हणजेच उमटणाऱ्या भावना तीव्र असण्याची शक्यता कमी व त्यांची हाताळणी सहज होण्याची शक्यता अधिक.
+        </p>
+
+        <p>
+          अर्थात मन हे ‘मन’ आहे, ते प्रत्येक वेळेस फक्त समोरच्या फडताळात जे काही असेल ते घेऊन स्वस्थ बसेलच असे नाही; पण निराशाजनक आणि टाकावू अनुभव जर जाणीवपूर्वक deleted किंवा buried deep down under असतील आणि वरचेवर चांगल्याच स्मृती हाताळण्यामुळे उत्तम विचार करण्याची सवय मनाच्या अंगवळणी पडली असेल; तर ते अनुभवांच्या शिदोरीच्या ‘डेटाबेस’मधे फार खोदकाम करून, नाही त्या स्मृती जागवून, नको ते विचार करण्याच्या भानगडीत पडण्याची शक्यता धूसर असेल.
+        </p>
+
+        <p>
+          मानसिक स्वास्थ्याच्या प्रवासात पुढे जाऊन फक्त क्षणात राहणेच किती महत्वाचे आहे हे उमगू लागले की आपोआपच त्या ‘समोरच्या फडताळातील’ स्मृतींची संख्या नगण्य होते व मनाला नाहक खोदकाम करायची सवय राहिली नसल्याने विचार कमी होवून वर्तमान ‘सहज’ होते.
+        </p>
+      </div>
+
+      <div class="mt-12 mb-6 text-center space-y-3 select-none">
+        <div class="text-base sm:text-lg tracking-wider text-stone-600 dark:text-stone-400 font-medium">
+          २०२४०७१३
+        </div>
+        <div class="text-xl sm:text-2xl tracking-widest text-amber-500/90 dark:text-amber-400/90">
+          🔶🔶🔶
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+  <!-- Non-intrusive Toast Notification for Copy / Share feedback -->
+  <div id="toast" 
+       class="fixed bottom-6 left-1/2 -translate-x-1/2 px-5 py-2.5 rounded-full bg-stone-900/90 text-white dark:bg-stone-100/95 dark:text-stone-900 text-sm font-medium shadow-xl opacity-0 pointer-events-none transition-opacity duration-300 z-50 flex items-center space-x-2">
+    <span id="toastMessage"></span>
+  </div>
+
+  <script>
+    // Theme Switcher Logic (Light / Dark with local persistence)
+    const htmlEl = document.documentElement;
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+
+    function updateThemeUI(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        htmlEl.classList.remove('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+
+    // Determine initial theme (localStorage or system preference)
+    const storedTheme = localStorage.getItem('man_re_theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialDark = storedTheme === 'dark' || (!storedTheme && prefersDark);
+    updateThemeUI(initialDark);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isCurrentlyDark = htmlEl.classList.contains('dark');
+      const nextDark = !isCurrentlyDark;
+      updateThemeUI(nextDark);
+      localStorage.setItem('man_re_theme', nextDark ? 'dark' : 'light');
+    });
+
+    // Toast Alert Helper
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      toastMessage.textContent = message;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2600);
+    }
+
+    // Share / Copy Link Logic
+    const shareBtn = document.getElementById('shareBtn');
+    shareBtn.addEventListener('click', () => {
+      const shareData = {
+        title: 'मन रे..',
+        text: 'मन रे.. मनुष्य जन्माला आला की त्याचा त्याच्या आयुष्याचा प्रवास सुरू होतो...',
+        url: window.location.href
+      };
+
+      if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        navigator.share(shareData).catch((err) => {
+          // Fallback if dismissed or canceled
+          if (err.name !== 'AbortError') {
+            copyToClipboard(window.location.href);
+          }
+        });
+      } else {
+        copyToClipboard(window.location.href);
+      }
+    });
+
+    // Reliable iframe-compatible clipboard copy
+    function copyToClipboard(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast('लिंक कॉपी झाली!');
+      } catch (err) {
+        showToast('कॉपी करणे शक्य झाले नाही');
+      }
+      document.body.removeChild(textarea);
+    }
+  </script>
+</body>
+</html>
