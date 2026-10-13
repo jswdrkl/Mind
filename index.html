@@ -6,7 +6,7 @@
   <title>मन रे..</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&family=IBM+Plex+Sans+Devanagari:wght@400&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -14,7 +14,7 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"IBM Plex Sans Devanagari"', '"IBM Plex Sans"', 'sans-serif'],
+            sans: ['Ubuntu', '"IBM Plex Sans Devanagari"', '"IBM Plex Sans"', 'sans-serif'],
           }
         }
       }
@@ -40,7 +40,8 @@
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-family: 'IBM Plex Sans Devanagari', 'IBM Plex Sans', sans-serif;
+      font-family: 'Ubuntu', 'IBM Plex Sans Devanagari', 'IBM Plex Sans', sans-serif;
+      font-weight: 400;
       word-break: normal;
       overflow-wrap: break-word;
       hyphens: none;
@@ -55,6 +56,28 @@
       word-break: normal;
       overflow-wrap: break-word;
       hyphens: none;
+      font-weight: 400;
+      line-height: 1.9;
+      font-size: 1.175rem;
+    }
+
+    @media (min-width: 641px) {
+      .article-body {
+        font-size: 1.25rem;
+      }
+    }
+
+    .article-body p {
+      margin-bottom: 1.35rem;
+      font-weight: 400;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .title-text {
+      font-weight: 400;
     }
 
     /* Animated colorful graphic styling */
@@ -115,61 +138,33 @@
       transform-origin: 160px 105px;
       animation: orbitLight 14s linear infinite;
     }
-
-    /* Toast animation */
-    .toast-enter {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .toast-exit {
-      opacity: 0;
-      transform: translateY(12px);
-    }
   </style>
 </head>
 <body class="min-h-screen selection:bg-amber-200 dark:selection:bg-amber-800 flex flex-col justify-between py-6 sm:py-10 px-4 sm:px-6">
 
   <header class="w-full max-w-2xl mx-auto flex justify-end items-center mb-6 sm:mb-8">
-    <div class="flex items-center gap-2 p-1.5 rounded-full bg-stone-200/60 dark:bg-stone-800/80 backdrop-blur-md shadow-sm border border-stone-300/40 dark:border-stone-700/50">
-      <!-- Theme Switcher Button -->
+    <div class="flex items-center p-1.5 rounded-full bg-stone-200/60 dark:bg-stone-800/80 backdrop-blur-md shadow-sm border border-stone-300/40 dark:border-stone-700/50">
       <button id="themeToggle" aria-label="थीम बदला" class="p-2.5 rounded-full hover:bg-white dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500/50">
-        <!-- Sun Icon -->
         <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="4"></circle>
           <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
         </svg>
-        <!-- Moon Icon -->
         <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
         </svg>
-      </button>
-
-      <!-- Share Button -->
-      <button id="shareButton" aria-label="शेअर करा" class="flex items-center gap-1.5 px-3 py-2 rounded-full hover:bg-white dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500/50 font-medium text-sm">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <circle cx="18" cy="5" r="3"></circle>
-          <circle cx="6" cy="12" r="3"></circle>
-          <circle cx="18" cy="19" r="3"></circle>
-          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-        </svg>
-        <span>शेअर</span>
       </button>
     </div>
   </header>
 
   <main class="w-full max-w-2xl mx-auto flex-1 bg-white/70 dark:bg-stone-900/60 rounded-3xl p-6 sm:p-10 md:p-12 shadow-xl shadow-stone-200/50 dark:shadow-black/30 border border-stone-200/60 dark:border-stone-800/80 backdrop-blur-md">
     
-    <!-- Title: Centered -->
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center tracking-tight text-stone-800 dark:text-stone-100 mb-6">
+    <h1 class="title-text text-3xl sm:text-4xl md:text-5xl text-center tracking-tight text-stone-800 dark:text-stone-100 mb-6">
       मन रे..
     </h1>
 
-    <!-- Animated Light Colorful SVG Graphic: Symbol of Mind, Thoughts, Memory Shelf & Rippling Awareness -->
     <div class="flex justify-center my-6 sm:my-8" aria-hidden="true">
       <svg class="w-64 sm:w-80 h-auto max-h-52 drop-shadow-sm select-none" viewBox="0 0 320 210" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <!-- Soft, radiant gradients representing mind and clarity -->
           <linearGradient id="cloudGrad" x1="40" y1="40" x2="280" y2="170" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stop-color="#fdba74" stop-opacity="0.85"/>
             <stop offset="35%" stop-color="#f472b6" stop-opacity="0.75"/>
@@ -194,18 +189,14 @@
           </filter>
         </defs>
 
-        <!-- Ambient aura background -->
         <g class="anim-aura">
           <ellipse cx="160" cy="105" rx="85" ry="55" fill="url(#glowGrad)" filter="url(#softGlow)" opacity="0.6"/>
         </g>
 
-        <!-- Mind / Consciousness Floating Wave Outline -->
         <g class="anim-wave">
-          <!-- Fluid organic form representing mind -->
           <path d="M100 120 C75 110 70 85 90 68 C105 55 125 58 138 66 C150 48 180 44 200 60 C215 52 235 56 244 72 C255 88 248 112 232 122 C218 130 115 130 100 120 Z" 
                 fill="url(#cloudGrad)" 
                 opacity="0.25"/>
-          
           <path d="M100 120 C75 110 70 85 90 68 C105 55 125 58 138 66 C150 48 180 44 200 60 C215 52 235 56 244 72 C255 88 248 112 232 122 C218 130 115 130 100 120 Z" 
                 stroke="url(#cloudGrad)" 
                 stroke-width="2.5" 
@@ -215,17 +206,14 @@
                 opacity="0.8"/>
         </g>
 
-        <!-- Memory ripple waves (स्मृतींच्या लहरी) -->
         <g transform="translate(160, 105)">
           <circle cx="0" cy="0" r="16" fill="none" stroke="#f59e0b" stroke-width="1.8" opacity="0.75" class="anim-ripple"/>
           <circle cx="0" cy="0" r="10" fill="#fef08a" stroke="#fbbf24" stroke-width="2"/>
         </g>
 
-        <!-- Memory Compartment / Front Shelf Symbol (समोरचे फडताळ / कप्पा) -->
         <g>
           <path d="M92 142 L228 142" stroke="url(#shelfGrad)" stroke-width="3.5" stroke-linecap="round"/>
           <path d="M104 150 L216 150" stroke="url(#shelfGrad)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-          <!-- Good memories gems (जाणीवपूर्वक ठेवलेल्या चांगल्या स्मृती) -->
           <circle cx="120" cy="133" r="5" fill="#f43f5e" class="anim-wave" style="animation-delay: -1s;"/>
           <circle cx="140" cy="132" r="6" fill="#38bdf8" class="anim-wave" style="animation-delay: -2s;"/>
           <circle cx="160" cy="130" r="7" fill="#fbbf24" class="anim-wave" style="animation-delay: -0.5s;"/>
@@ -233,7 +221,6 @@
           <circle cx="200" cy="133" r="5" fill="#34d399" class="anim-wave" style="animation-delay: -1.5s;"/>
         </g>
 
-        <!-- Orbiting spark representing gentle thought stream -->
         <g class="anim-orbit">
           <circle cx="160" cy="50" r="3.5" fill="#ec4899" opacity="0.9"/>
           <circle cx="215" cy="105" r="3" fill="#06b6d4" opacity="0.85"/>
@@ -241,9 +228,9 @@
       </svg>
     </div>
 
-    <article class="article-body space-y-6 sm:space-y-7 text-base sm:text-lg leading-relaxed sm:leading-[2.05] font-normal text-stone-700 dark:text-stone-300">
+    <article class="article-body text-stone-700 dark:text-stone-300">
       <p>
-        मनुष्य जन्माला आला की त्याचा त्याच्या आयुष्याचा प्रवास सुरू होतो. त्याच्यासाठी आणि अर्थातच त्याच्या मनासाठी ही वाटचाल म्हणजे ‘अनुभव’ (experiences) जमा होण्याचा प्रवास असतो. वय वाढत जाते तसतसे माणसाला विविध अनुभव येत जातात आणि अनुभवांची शिदोरी अर्थात स्मृती (memory) भरू लागते. काळाच्या ओघात चांगले-वाईट, सुखद-दुःखद असे सर्व प्रकारचे अनुभव येणे/मिळणे/होणे आणि आलेले अनुभव ‘स्मृतीं’मधे नोंदले जाणे (recorded in memory) अपरिहार्य आहे.
+        मनुष्य जन्माला आला की त्याचा त्याच्या आयुष्याचा प्रवास सुरू होतो.त्याच्यासाठी आणि अर्थातच त्याच्या मनासाठी ही वाटचाल म्हणजे ‘अनुभव’ (experiences) जमा होण्याचा प्रवास असतो. वय वाढत जाते तसतसे माणसाला विविध अनुभव येत जातात आणि अनुभवांची शिदोरी अर्थात स्मृती (memory) भरू लागते. काळाच्या ओघात चांगले-वाईट, सुखद-दुःखद असे सर्व प्रकारचे अनुभव येणे/मिळणे/होणे आणि आलेले अनुभव ‘स्मृतीं’मधे नोंदले जाणे (recorded in memory) अपरिहार्य आहे.
       </p>
 
       <p>
@@ -268,7 +255,7 @@
     </article>
 
     <div class="mt-12 pt-6 border-t border-stone-200/50 dark:border-stone-800/60 text-center space-y-3">
-      <div class="text-base sm:text-lg font-medium text-stone-600 dark:text-stone-400 tracking-wider">
+      <div class="text-base sm:text-lg text-stone-600 dark:text-stone-400 tracking-wider">
         २०२४०७१३
       </div>
       <div class="text-xl sm:text-2xl tracking-widest text-amber-500 select-none">
@@ -276,14 +263,27 @@
       </div>
     </div>
 
+    <!-- Share Button positioned at the bottom of the page -->
+    <div class="mt-8 flex justify-center">
+      <button id="shareButton" aria-label="शेअर करा" class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-stone-200/70 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500/50 text-base">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="18" cy="5" r="3"></circle>
+          <circle cx="6" cy="12" r="3"></circle>
+          <circle cx="18" cy="19" r="3"></circle>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+        </svg>
+        <span>शेअर</span>
+      </button>
+    </div>
+
   </main>
 
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 px-5 py-2.5 rounded-full bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 text-sm font-medium shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-50">
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 px-5 py-2.5 rounded-full bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 text-sm shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-50">
     लहान लिंक कॉपी झाली!
   </div>
 
   <script>
-    // Theme toggle handling
     const htmlElem = document.documentElement;
     const themeBtn = document.getElementById('themeToggle');
     const sunIcon = document.getElementById('sunIcon');
@@ -291,7 +291,6 @@
     const toast = document.getElementById('toast');
     const shareBtn = document.getElementById('shareButton');
 
-    // Update icons according to state
     function updateThemeIcons(isDark) {
       if (isDark) {
         sunIcon.classList.remove('hidden');
@@ -302,7 +301,6 @@
       }
     }
 
-    // Initialize theme based on preference or local stored value
     const savedTheme = localStorage.getItem('theme-mode');
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -320,7 +318,6 @@
       updateThemeIcons(isDark);
     });
 
-    // Toast helper
     let toastTimeout = null;
     function showToast(message) {
       toast.textContent = message;
@@ -334,7 +331,6 @@
       }, 2500);
     }
 
-    // Share functionality
     shareBtn.addEventListener('click', function () {
       const shareData = {
         title: 'मन रे..',
@@ -353,7 +349,6 @@
       }
     });
 
-    // Fallback copy using textarea
     function copyFallback() {
       const textToCopy = window.location.href;
       const tempInput = document.createElement('textarea');
